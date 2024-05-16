@@ -117,4 +117,18 @@ public class ServicosEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(idServicos);
     }
+
+    @Override
+    public String toString() {
+        return "ServicosEntity{" +
+                "idServicos=" + idServicos +
+                ", servicosNome='" + servicosNome + '\'' +
+                ", servicosPreco=" + servicosPreco +
+                ", servicosDescricao='" + servicosDescricao + '\'' +
+                ", servicosInformacoesAdicionais='" + servicosInformacoesAdicionais + '\'' +
+                ", servicosClassificacao='" + servicosClassificacao + '\'' +
+                ", categoria=" + categoria +
+                ", prestador=" + prestador +
+                '}';
+    }
 }

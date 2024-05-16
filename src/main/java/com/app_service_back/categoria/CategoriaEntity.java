@@ -70,4 +70,13 @@ public class CategoriaEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(idCategoria);
     }
+
+    @Override
+    public String toString() {
+        return "CategoriaEntity{" +
+                "idCategoria=" + idCategoria +
+                ", categoriaNome='" + categoriaNome + '\'' +
+                ", categoriaDescricao='" + categoriaDescricao + '\'' +
+                '}';
+    }
 }

@@ -35,7 +35,8 @@ public class PrestadorService {
     //Update prestador
     public PrestadorDTO update(Long id, PrestadorDTO prestadorDTO){
         PrestadorEntity prestador = prestadorRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Prestador não encontrado"));
-        prestadorMapper.updateEntity(prestadorDTO, prestador);
+        prestadorDTO.setIdPrestador(id);
+        prestador = prestadorMapper.updateEntity(prestadorDTO, prestador);
         prestador = prestadorRepository.save(prestador);
         return prestadorMapper.toDTO(prestador);
     }

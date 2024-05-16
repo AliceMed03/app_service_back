@@ -24,10 +24,10 @@ public class EnderecoEntity implements Serializable {
     private String enderecoCidade;
     private String enderecoEstado;
     private String enderecoBairro;
-    @OneToMany(mappedBy = "idCliente", fetch = FetchType.EAGER)
-    private List<ClienteEntity> cliente = new ArrayList<>();
-    @OneToMany(mappedBy = "idPrestador", fetch = FetchType.EAGER)
-    private List<PrestadorEntity> prestador = new ArrayList<>();
+    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
+    private List<ClienteEntity> cliente;
+//    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
+//    private List<PrestadorEntity> prestador = new ArrayList<>();
 
     public EnderecoEntity() {
     }
@@ -110,9 +110,9 @@ public class EnderecoEntity implements Serializable {
         return cliente;
     }
 
-    public List<PrestadorEntity> getPrestador() {
-        return prestador;
-    }
+//    public List<PrestadorEntity> getPrestador() {
+//        return prestador;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -125,5 +125,19 @@ public class EnderecoEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idEndereco);
+    }
+
+    @Override
+    public String toString() {
+        return "EnderecoEntity{" +
+                "idEndereco=" + idEndereco +
+                ", enderecoRua='" + enderecoRua + '\'' +
+                ", enderecoCep='" + enderecoCep + '\'' +
+                ", enderecoNumero=" + enderecoNumero +
+                ", enderecoComplemento='" + enderecoComplemento + '\'' +
+                ", enderecoCidade='" + enderecoCidade + '\'' +
+                ", enderecoEstado='" + enderecoEstado + '\'' +
+                ", enderecoBairro='" + enderecoBairro + '\'' +
+                '}';
     }
 }

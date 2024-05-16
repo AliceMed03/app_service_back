@@ -36,7 +36,8 @@ public class CategoriaService {
     //Update categoria
     public CategoriaDTO update(Long id, CategoriaDTO categoriaDTO){
         CategoriaEntity categoria = categoriaRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Categoria não encontrada"));
-        categoriaMapper.updateEntity(categoriaDTO, categoria);
+        categoriaDTO.setIdCategoria(id);
+        categoria = categoriaMapper.updateEntity(categoriaDTO, categoria);
         categoria = categoriaRepository.save(categoria);
         return categoriaMapper.toDTO(categoria);
     }

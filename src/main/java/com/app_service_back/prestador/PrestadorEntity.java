@@ -142,4 +142,19 @@ public class PrestadorEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(idPrestador);
     }
+
+    @Override
+    public String toString() {
+        return "PrestadorEntity{" +
+                "idPrestador=" + idPrestador +
+                ", prestadorNome='" + prestadorNome + '\'' +
+                ", prestadorCpf='" + prestadorCpf + '\'' +
+                ", prestadorRazaoSocial='" + prestadorRazaoSocial + '\'' +
+                ", prestadorNomeFantasia='" + prestadorNomeFantasia + '\'' +
+                ", prestadorCnpj='" + prestadorCnpj + '\'' +
+                ", prestadorEmail='" + prestadorEmail + '\'' +
+                ", prestadorSenha='" + prestadorSenha + '\'' +
+                ", endereco=" + endereco +
+                '}';
+    }
 }
