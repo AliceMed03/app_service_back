@@ -5,7 +5,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import java.util.List;
-@Mapper
+@Mapper(componentModel = "spring")
 public interface AgendamentoMapper {
     @Mapping(source = "idAgendamento", target = "idAgendamento")
     AgendamentoDTO toDTO(AgendamentoEntity agendamento);
