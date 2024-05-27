@@ -1,4 +1,6 @@
 package com.app_service_back.agendamento;
 
-public interface AgendamentoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AgendamentoRepository extends JpaRepository<AgendamentoEntity, Long> {
 }

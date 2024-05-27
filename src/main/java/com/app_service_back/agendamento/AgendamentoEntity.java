@@ -1,6 +1,5 @@
 package com.app_service_back.agendamento;
 
-import com.app_service_back.categoria.CategoriaEntity;
 import com.app_service_back.cliente.ClienteEntity;
 import com.app_service_back.enums.StatusEnum;
 import com.app_service_back.servicos.ServicosEntity;
@@ -21,7 +20,7 @@ public class AgendamentoEntity implements Serializable {
     private Long idAgendamento;
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "DD/MM/YYYY")
-    private LocalDate agendamentoData;
+    private LocalDate agendamentoData; // = LocalDate.now();
     @Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:MM")
     private LocalTime agendamentoHora;
@@ -114,5 +113,19 @@ public class AgendamentoEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idAgendamento);
+    }
+
+
+    @Override
+    public String toString() {
+        return "AgendamentoEntity{" +
+                "idAgendamento=" + idAgendamento +
+                ", agendamentoData=" + agendamentoData +
+                ", agendamentoHora=" + agendamentoHora +
+                ", agendamentoObservacao='" + agendamentoObservacao + '\'' +
+                ", agendamentoStatus=" + agendamentoStatus +
+                ", cliente=" + cliente +
+                ", servicos=" + servicos +
+                '}';
     }
 }
