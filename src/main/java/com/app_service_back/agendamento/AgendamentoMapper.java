@@ -1,7 +1,5 @@
 package com.app_service_back.agendamento;
 
-import com.app_service_back.cliente.ClienteDTO;
-import com.app_service_back.cliente.ClienteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
