@@ -24,10 +24,11 @@ public class EnderecoEntity implements Serializable {
     private String enderecoCidade;
     private String enderecoEstado;
     private String enderecoBairro;
-    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
+    //mappedBy = "endereco",
+    @OneToMany(fetch = FetchType.EAGER)
     private List<ClienteEntity> cliente;
-//    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
-//    private List<PrestadorEntity> prestador = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<PrestadorEntity> prestador;
 
     public EnderecoEntity() {
     }
@@ -110,9 +111,17 @@ public class EnderecoEntity implements Serializable {
         return cliente;
     }
 
-//    public List<PrestadorEntity> getPrestador() {
-//        return prestador;
-//    }
+    public void setCliente(List<ClienteEntity> cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<PrestadorEntity> getPrestador() {
+        return prestador;
+    }
+
+    public void setPrestador(List<PrestadorEntity> prestador) {
+        this.prestador = prestador;
+    }
 
     @Override
     public boolean equals(Object o) {

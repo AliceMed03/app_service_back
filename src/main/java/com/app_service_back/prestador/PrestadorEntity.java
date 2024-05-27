@@ -27,9 +27,11 @@ public class PrestadorEntity implements Serializable {
     @Column(unique = true)
     private String prestadorEmail;
     private String prestadorSenha;
-    @OneToMany(mappedBy = "idServicos", fetch = FetchType.EAGER)
+    //mappedBy = "idServicos",
+    @OneToMany(fetch = FetchType.EAGER)
     private List<ServicosEntity> servicos = new ArrayList<>();
-    @OneToMany(mappedBy = "idTelefone", fetch = FetchType.EAGER)
+    //mappedBy = "idTelefone",
+    @OneToMany( fetch = FetchType.EAGER)
     private List<TelefoneEntity> telefone = new ArrayList<>();
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prestadorIdEndereco", nullable = false)

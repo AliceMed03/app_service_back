@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,16 @@ public class ClienteController {
     @GetMapping
     public ResponseEntity<List<ClienteDTO>> getAllClientes(){
         List<ClienteDTO> clienteDTO = clienteService.findAll();
-        return ResponseEntity.ok(clienteDTO);
+
+
+        try {
+            return ResponseEntity.ok(clienteDTO);
+        }catch (HttpMessageNotWritableException e){
+
+            System.out.println("a");
+        }
+
+        return null;
     }
     @GetMapping("/{id}")
     public ResponseEntity<ClienteDTO> getClienteById(@PathVariable Long id){

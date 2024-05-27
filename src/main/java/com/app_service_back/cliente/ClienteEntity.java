@@ -30,10 +30,12 @@ public class ClienteEntity implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clienteIdEndereco")
     private EnderecoEntity endereco;
-//    @OneToMany(mappedBy = "idTelefone", fetch = FetchType.EAGER)
-//    private List<TelefoneEntity> telefone = new ArrayList<>();
-//    @OneToMany(mappedBy = "idAgendamento", fetch = FetchType.EAGER)
-//    private List<AgendamentoEntity> agendamento = new ArrayList<>();
+    //mappedBy = "idTelefone",
+    @OneToMany( fetch = FetchType.EAGER)
+    private List<TelefoneEntity> telefone;
+    //mappedBy = "idAgendamento",
+    @OneToMany( fetch = FetchType.EAGER)
+    private List<AgendamentoEntity> agendamento;
 
     public ClienteEntity() {
     }
@@ -99,13 +101,21 @@ public class ClienteEntity implements Serializable {
         this.endereco = endereco;
     }
 
-//    public List<TelefoneEntity> getTelefone() {
-//       return telefone;
-//    }
-//
-//    public List<AgendamentoEntity> getAgendamento() {
-//        return agendamento;
-//    }
+    public List<TelefoneEntity> getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(List<TelefoneEntity> telefone) {
+        this.telefone = telefone;
+    }
+
+    public List<AgendamentoEntity> getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(List<AgendamentoEntity> agendamento) {
+        this.agendamento = agendamento;
+    }
 
     @Override
     public boolean equals(Object o) {

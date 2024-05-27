@@ -19,20 +19,20 @@ public class TelefoneEntity implements Serializable {
     private Long idTelefone;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "(XX) XXXXX-XXXX")
     private String telefoneNumero;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "telefoneIdCliente", nullable = false)
-//    private ClienteEntity cliente;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "telefoneIdPrestador", nullable = false)
-//    private PrestadorEntity prestador;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "telefoneIdCliente", nullable = false)
+    private ClienteEntity cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "telefoneIdPrestador", nullable = false)
+    private PrestadorEntity prestador;
 
     public TelefoneEntity() {
     }
     public TelefoneEntity(Long idTelefone, String telefoneNumero, ClienteEntity cliente, PrestadorEntity prestador) {
         this.idTelefone = idTelefone;
         this.telefoneNumero = telefoneNumero;
-//        this.cliente = cliente;
-//        this.prestador = prestador;
+        this.cliente = cliente;
+        this.prestador = prestador;
     }
 
     public Long getIdTelefone() {
@@ -51,21 +51,21 @@ public class TelefoneEntity implements Serializable {
         this.telefoneNumero = telefoneNumero;
     }
 
-//    public ClienteEntity getCliente() {
-//        return cliente;
-//    }
-//
-//    public void setCliente(ClienteEntity cliente) {
-//        this.cliente = cliente;
-//    }
-//
-//    public PrestadorEntity getPrestador() {
-//        return prestador;
-//    }
-//
-//    public void setPrestador(PrestadorEntity prestador) {
-//        this.prestador = prestador;
-//    }
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public PrestadorEntity getPrestador() {
+        return prestador;
+    }
+
+    public void setPrestador(PrestadorEntity prestador) {
+        this.prestador = prestador;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,5 +78,15 @@ public class TelefoneEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idTelefone);
+    }
+
+    @Override
+    public String toString() {
+        return "TelefoneEntity{" +
+                "idTelefone=" + idTelefone +
+                ", telefoneNumero='" + telefoneNumero + '\'' +
+                ", cliente=" + cliente +
+                ", prestador=" + prestador +
+                '}';
     }
 }
