@@ -17,8 +17,8 @@ public class AgendamentoDTO implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "O campo DATA é requerido.")
     private LocalDate agendamentoData; // = LocalDate.now();
-    @JsonFormat(pattern = "HH:MM")
-    @NotNull(message = "O campo HORAé requerido.")
+    @JsonFormat(pattern = "HH:mm")
+    @NotNull(message = "O campo HORA é requerido.")
     private LocalTime agendamentoHora;
     private String agendamentoObservacao;
     //@Enumerated(EnumType.STRING)

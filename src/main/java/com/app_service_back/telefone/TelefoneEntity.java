@@ -19,10 +19,10 @@ public class TelefoneEntity implements Serializable {
     private Long idTelefone;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "(XX) XXXXX-XXXX")
     private String telefoneNumero;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefoneIdCliente", nullable = false)
     private ClienteEntity cliente;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefoneIdPrestador", nullable = false)
     private PrestadorEntity prestador;
 

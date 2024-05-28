@@ -1,11 +1,14 @@
 package com.app_service_back.servicos;
 
+import com.app_service_back.agendamento.AgendamentoEntity;
 import com.app_service_back.categoria.CategoriaEntity;
 import com.app_service_back.endereco.EnderecoEntity;
 import com.app_service_back.prestador.PrestadorEntity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +30,9 @@ public class ServicosEntity implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servicosIdPrestador", nullable = false)
     private PrestadorEntity prestador;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<AgendamentoEntity> agendamento = new ArrayList<>();
+
 
     public ServicosEntity() {
     }
