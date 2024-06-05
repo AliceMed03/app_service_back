@@ -8,7 +8,7 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController // habilitar o REST
 @RequestMapping("/agendamento")
 public class AgendamentoController {
