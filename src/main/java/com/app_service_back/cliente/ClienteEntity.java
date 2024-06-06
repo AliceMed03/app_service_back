@@ -21,7 +21,8 @@ public class ClienteEntity implements Serializable {
     private Long idCliente;
     private String clienteNome;
     @CPF
-    @Column(unique = true, nullable = false)
+    //, nullable = false
+    @Column(unique = true)
     private String clienteCpf;
     @Column(unique = true)
     private String clienteEmail;

@@ -25,7 +25,7 @@ public class EnderecoDTO implements Serializable {
     @NotNull(message = "O campo BAIRRO é requerido.")
     private String enderecoBairro;
     private List<ClienteEntity> cliente;
-    //private List<PrestadorEntity> prestador = new ArrayList<>();
+    private List<PrestadorEntity> prestador;
 
 
     public EnderecoDTO() {
@@ -111,5 +111,13 @@ public class EnderecoDTO implements Serializable {
 
     public void setCliente(List<ClienteEntity> cliente) {
         this.cliente = cliente;
+    }
+
+    public List<PrestadorEntity> getPrestador() {
+        return prestador;
+    }
+
+    public void setPrestador(List<PrestadorEntity> prestador) {
+        this.prestador = prestador;
     }
 }
