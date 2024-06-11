@@ -111,6 +111,14 @@ public class ServicosEntity implements Serializable {
         this.prestador = prestador;
     }
 
+    public List<AgendamentoEntity> getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(List<AgendamentoEntity> agendamento) {
+        this.agendamento = agendamento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -31,8 +31,8 @@ public class PrestadorDTO implements Serializable {
     @JsonIgnore
     private String prestadorSenha;
     private EnderecoEntity endereco;
-    //private List<ServicosEntity> servicos = new ArrayList<>();
-    //private List<TelefoneEntity> telefone = new ArrayList<>();
+    private List<ServicosEntity> servicos = new ArrayList<>();
+    private List<TelefoneEntity> telefone = new ArrayList<>();
 
 
     public PrestadorDTO() {
@@ -120,4 +120,22 @@ public class PrestadorDTO implements Serializable {
     public void setEndereco(EnderecoEntity endereco) {
         this.endereco = endereco;
     }
+
+    public List<ServicosEntity> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<ServicosEntity> servicos) {
+        this.servicos = servicos;
+    }
+
+    public List<TelefoneEntity> getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(List<TelefoneEntity> telefone) {
+        this.telefone = telefone;
+    }
 }
+
+
