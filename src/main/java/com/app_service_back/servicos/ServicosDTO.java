@@ -3,6 +3,7 @@ package com.app_service_back.servicos;
 import com.app_service_back.categoria.CategoriaEntity;
 import com.app_service_back.prestador.PrestadorEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
@@ -10,11 +11,11 @@ import java.io.Serializable;
 public class ServicosDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long idServicos;
-    @NotNull(message = "O campo NOME é requerido.")
+    @NotBlank(message = "O campo NOME é requerido.")
     private String servicosNome;
-    @NotNull(message = "O campo PREÇO é requerido.")
+    @NotBlank(message = "O campo PREÇO é requerido.")
     private Double servicosPreco;
-    @NotNull(message = "O campo DESCRIÇÃO é requerido.")
+    @NotBlank(message = "O campo DESCRIÇÃO é requerido.")
     private String servicosDescricao;
     private String servicosInformacoesAdicionais;
     private String servicosClassificacao;

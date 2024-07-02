@@ -1,6 +1,5 @@
 package com.app_service_back.cliente;
 
-import com.app_service_back.telefone.TelefoneDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,26 +36,11 @@ public class ClienteController {
         return ResponseEntity.ok(clienteDTO);
     }
     @PostMapping
-    public ResponseEntity<ClienteDTO> createClienteDTO(@Valid @RequestBody ClienteDTO clienteDTO, TelefoneDTO telefoneDTO){
+    public ResponseEntity<ClienteDTO> createClienteDTO(@Valid @RequestBody ClienteDTO clienteDTO){
         ClienteDTO createClienteDTO = clienteService.create(clienteDTO);
-//        ClienteEntity cliente = clienteMapper.toEntity(createClienteDTO);
-//        telefoneDTO
-//        TelefoneDTO createTelefoneDTO = telefoneService.create(clienteDTO);
-
-//        TelefoneDTO telefoneDTO = new TelefoneDTO();
-//        telefoneDTO.setTelefoneNumero(clienteDTO.getTelefoneNumero());
-//        telefoneService.create(telefoneDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createClienteDTO);
     }
 
-//    @PostMapping
-//    public ResponseEntity<ClienteDTO> createClienteDTO(@Valid @RequestBody ClienteDTO clienteDTO){
-//        ClienteDTO createClienteDTO = clienteService.create(clienteDTO);
-//        TelefoneDTO telefoneDTO = new TelefoneDTO();
-//        telefoneDTO.setTelefoneNumero(clienteDTO.getTelefoneNumero());
-//        telefoneService.create(telefoneDTO);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createClienteDTO);
-//    }
     @PutMapping("/{id}")
     public ResponseEntity<ClienteDTO> updateClienteDTO(@PathVariable Long id, @Valid @RequestBody ClienteDTO clienteDTO){
         ClienteDTO updateClienteDTO = clienteService.update(id,clienteDTO);

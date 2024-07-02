@@ -16,8 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -28,6 +27,22 @@ public class CategoriaTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Test
+    @DisplayName("Verifica um ID inexistente")
+    void idInexistente() throws Exception{
+        mockMvc.perform(get("/categoria/20"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Categoria não encontrada"));
+    }
+
+    @Test
+    @DisplayName("Verifica um ID existente")
+    void findById() throws Exception{
+        mockMvc.perform(get("/categoria/3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.categoriaNome").value("Jardinagem"));
+    }
 
     @Test
     @DisplayName("Verificar se a rota de categoria está respondendo corretamente")

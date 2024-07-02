@@ -2,7 +2,6 @@ package com.app_service_back.prestador;
 
 import com.app_service_back.endereco.EnderecoEntity;
 import com.app_service_back.servicos.ServicosEntity;
-import com.app_service_back.telefone.TelefoneEntity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -27,12 +26,11 @@ public class PrestadorEntity implements Serializable {
     @Column(unique = true)
     private String prestadorEmail;
     private String prestadorSenha;
+    private String prestadortelefone;
+
     //mappedBy = "idServicos",
     @OneToMany(fetch = FetchType.EAGER)
     private List<ServicosEntity> servicos = new ArrayList<>();
-    //mappedBy = "idTelefone",
-    @OneToMany( fetch = FetchType.EAGER)
-    private List<TelefoneEntity> telefone = new ArrayList<>();
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prestadorIdEndereco", nullable = false)
     private EnderecoEntity endereco;
@@ -40,7 +38,7 @@ public class PrestadorEntity implements Serializable {
     public PrestadorEntity() {
 
     }
-    public PrestadorEntity(Long idPrestador, String prestadorNome, String prestadorCpf, String prestadorRazaoSocial, String prestadorNomeFantasia, String prestadorCnpj, String prestadorEmail, String prestadorSenha, EnderecoEntity endereco) {
+    public PrestadorEntity(Long idPrestador, String prestadorNome, String prestadorCpf, String prestadorRazaoSocial, String prestadorNomeFantasia, String prestadorCnpj, String prestadorEmail, String prestadorSenha, EnderecoEntity endereco, String prestadortelefone) {
         this.idPrestador = idPrestador;
         this.prestadorNome = prestadorNome;
         this.prestadorCpf = prestadorCpf;
@@ -49,6 +47,7 @@ public class PrestadorEntity implements Serializable {
         this.prestadorCnpj = prestadorCnpj;
         this.prestadorEmail = prestadorEmail;
         this.prestadorSenha = prestadorSenha;
+        this.prestadortelefone = prestadortelefone;
         this.endereco = endereco;
     }
 
@@ -116,13 +115,22 @@ public class PrestadorEntity implements Serializable {
         this.prestadorSenha = prestadorSenha;
     }
 
+    public String getPrestadortelefone() {
+        return prestadortelefone;
+    }
+
+    public void setPrestadortelefone(String prestadortelefone) {
+        this.prestadortelefone = prestadortelefone;
+    }
+
+    public void setServicos(List<ServicosEntity> servicos) {
+        this.servicos = servicos;
+    }
+
     public List<ServicosEntity> getServicos() {
         return servicos;
     }
 
-    public List<TelefoneEntity> getTelefone() {
-        return telefone;
-    }
 
     public EnderecoEntity getEndereco() {
         return endereco;
@@ -156,6 +164,8 @@ public class PrestadorEntity implements Serializable {
                 ", prestadorCnpj='" + prestadorCnpj + '\'' +
                 ", prestadorEmail='" + prestadorEmail + '\'' +
                 ", prestadorSenha='" + prestadorSenha + '\'' +
+                ", prestadortelefone='" + prestadortelefone + '\'' +
+                ", servicos=" + servicos +
                 ", endereco=" + endereco +
                 '}';
     }

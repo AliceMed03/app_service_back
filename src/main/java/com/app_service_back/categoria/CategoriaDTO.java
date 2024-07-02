@@ -1,25 +1,29 @@
 package com.app_service_back.categoria;
 
+import com.app_service_back.servicos.ServicosDTO;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class CategoriaDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long idCategoria;
-    @NotNull(message = "O campo NOME é requerido.")
+    @NotBlank(message = "O campo NOME é requerido.")
     private String categoriaNome;
-    @NotNull(message = "O campo DESCRIÇÃO é requerido.")
+    @NotBlank(message = "O campo DESCRIÇÃO é requerido.")
     private String categoriaDescricao;
-    //private list servico
+    private List<ServicosDTO> servicos;
 
     public CategoriaDTO() {
     }
-    public CategoriaDTO(Long idCategoria, String categoriaNome, String categoriaDescricao) {
+    public CategoriaDTO(Long idCategoria, String categoriaNome, String categoriaDescricao, List<ServicosDTO> servicos) {
         this.idCategoria = idCategoria;
         this.categoriaNome = categoriaNome;
         this.categoriaDescricao = categoriaDescricao;
+        this.servicos = servicos;
     }
 
     public Long getIdCategoria() {
@@ -44,5 +48,13 @@ public class CategoriaDTO implements Serializable {
 
     public void setCategoriaDescricao(String categoriaDescricao) {
         this.categoriaDescricao = categoriaDescricao;
+    }
+
+    public List<ServicosDTO> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<ServicosDTO> servicos) {
+        this.servicos = servicos;
     }
 }

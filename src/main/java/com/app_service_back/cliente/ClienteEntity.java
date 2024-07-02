@@ -2,13 +2,10 @@ package com.app_service_back.cliente;
 
 import com.app_service_back.agendamento.AgendamentoEntity;
 import com.app_service_back.endereco.EnderecoEntity;
-import com.app_service_back.telefone.TelefoneEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.br.CPF;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,25 +24,24 @@ public class ClienteEntity implements Serializable {
     @Column(unique = true)
     private String clienteEmail;
     private String clienteSenha;
+    private String clienteTelefone;
+
     private LocalDate clienteDataNascimento;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clienteIdEndereco")
     private EnderecoEntity endereco;
-    //mappedBy = "idTelefone",
-    @OneToMany( fetch = FetchType.EAGER)
-    private List<TelefoneEntity> telefone;
-    //mappedBy = "idAgendamento",
     @OneToMany( fetch = FetchType.EAGER)
     private List<AgendamentoEntity> agendamento;
 
     public ClienteEntity() {
     }
-    public ClienteEntity(Long idCliente, String clienteNome, String clienteCpf, String clienteEmail, String clienteSenha, LocalDate clienteDataNascimento, EnderecoEntity endereco) {
+    public ClienteEntity(Long idCliente, String clienteNome, String clienteCpf, String clienteEmail, String clienteSenha, LocalDate clienteDataNascimento, EnderecoEntity endereco, String clienteTelefone) {
         this.idCliente = idCliente;
         this.clienteNome = clienteNome;
         this.clienteCpf = clienteCpf;
         this.clienteEmail = clienteEmail;
         this.clienteSenha = clienteSenha;
+        this.clienteTelefone = clienteTelefone;
         this.clienteDataNascimento = clienteDataNascimento;
         this.endereco = endereco;
     }
@@ -90,6 +86,14 @@ public class ClienteEntity implements Serializable {
         return clienteDataNascimento;
     }
 
+    public String getClienteTelefone() {
+        return clienteTelefone;
+    }
+
+    public void setClienteTelefone(String clienteTelefone) {
+        this.clienteTelefone = clienteTelefone;
+    }
+
     public void setClienteDataNascimento(LocalDate clienteDataNascimento) {
         this.clienteDataNascimento = clienteDataNascimento;
     }
@@ -102,14 +106,6 @@ public class ClienteEntity implements Serializable {
         this.endereco = endereco;
     }
 
-    public List<TelefoneEntity> getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(List<TelefoneEntity> telefone) {
-        this.telefone = telefone;
-    }
-
     public List<AgendamentoEntity> getAgendamento() {
         return agendamento;
     }
@@ -117,6 +113,8 @@ public class ClienteEntity implements Serializable {
     public void setAgendamento(List<AgendamentoEntity> agendamento) {
         this.agendamento = agendamento;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -139,9 +137,12 @@ public class ClienteEntity implements Serializable {
                 ", clienteCpf='" + clienteCpf + '\'' +
                 ", clienteEmail='" + clienteEmail + '\'' +
                 ", clienteSenha='" + clienteSenha + '\'' +
+                ", clienteTelefone='" + clienteTelefone + '\'' +
                 ", clienteDataNascimento=" + clienteDataNascimento +
                 ", endereco=" + endereco +
+                ", agendamento=" + agendamento +
                 '}';
     }
+
 
 }

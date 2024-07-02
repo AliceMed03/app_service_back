@@ -1,5 +1,7 @@
 package com.app_service_back.prestador;
 
+import com.app_service_back.servicos.ServicosEntity;
+import com.app_service_back.servicos.ServicosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -12,6 +14,9 @@ public class PrestadorService {
 
     @Autowired
     private PrestadorMapper prestadorMapper;
+
+    @Autowired
+    private ServicosRepository servicosRepository;
 
     //Buscar todos os prestadores
     public List<PrestadorDTO> findAll(){
@@ -44,5 +49,13 @@ public class PrestadorService {
     //Delete prestador
     public void deleteById(long id){
         prestadorRepository.deleteById(id);
+    }
+
+    public List<PrestadorDTO> findByServicosNome(String servicosNome) {
+        List<ServicosEntity> servicos = servicosRepository.findByServicosNome(servicosNome);;
+        List<PrestadorEntity> prestador = servicos.stream()
+                .map(ServicosEntity::getPrestador)
+                .collect(Collectors.toList());
+        return prestador.stream().map(prestadorMapper::toDTO).collect(Collectors.toList());
     }
 }

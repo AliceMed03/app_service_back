@@ -22,8 +22,10 @@ public interface ClienteMapper {
             @Mapping(source = "clienteDTO.clienteCpf", target = "clienteCpf"),
             @Mapping(source = "clienteDTO.clienteEmail", target = "clienteEmail"),
             @Mapping(source = "clienteDTO.clienteSenha", target = "clienteSenha"),
+            @Mapping(source = "clienteDTO.clienteTelefone", target = "clienteTelefone"),
             @Mapping(source = "clienteDTO.clienteDataNascimento", target = "clienteDataNascimento"),
             @Mapping(source = "clienteDTO.endereco", target = "endereco"),
+            @Mapping(source = "clienteDTO.agendamento", target = "agendamento")
     })
     ClienteEntity updateEntity(ClienteDTO clienteDTO, ClienteEntity cliente);
 }

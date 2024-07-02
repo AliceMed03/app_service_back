@@ -2,9 +2,9 @@ package com.app_service_back.cliente;
 
 import com.app_service_back.agendamento.AgendamentoEntity;
 import com.app_service_back.endereco.EnderecoEntity;
-import com.app_service_back.telefone.TelefoneEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 import java.io.Serializable;
@@ -15,33 +15,34 @@ import java.util.List;
 public class ClienteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long idCliente;
-    @NotNull(message = "O campo NOME é requerido.")
+    @NotBlank(message = "O campo NOME é requerido.")
     private String clienteNome;
     @CPF
-    @NotNull(message = "O campo CPF é requerido.")
+    @NotBlank(message = "O campo CPF é requerido.")
     private String clienteCpf;
-    @NotNull(message = "O campo EMAIL é requerido.")
+    @NotBlank(message = "O campo EMAIL é requerido.")
     private String clienteEmail;
-    @JsonIgnore
     private String clienteSenha;
+    @NotBlank(message = "O campo TELEFONE é requerido.")
+    private String clienteTelefone;
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "O campo DATA DE NASCIMENTO é requerido.")
     private LocalDate clienteDataNascimento;
     private EnderecoEntity endereco;
     //private String telefoneNumero;
-    private List<TelefoneEntity> telefone = new ArrayList<>();
     private List<AgendamentoEntity> agendamento = new ArrayList<>();
 
 
 
     public ClienteDTO() {
     }
-    public ClienteDTO(Long idCliente, String clienteNome, String clienteCpf, String clienteEmail, String clienteSenha, LocalDate clienteDataNascimento, EnderecoEntity endereco) {
+    public ClienteDTO(Long idCliente, String clienteNome, String clienteCpf, String clienteEmail, String clienteSenha, LocalDate clienteDataNascimento, EnderecoEntity endereco, String clienteTelefone) {
         this.idCliente = idCliente;
         this.clienteNome = clienteNome;
         this.clienteCpf = clienteCpf;
         this.clienteEmail = clienteEmail;
         this.clienteSenha = clienteSenha;
+        this.clienteTelefone = clienteTelefone;
         this.clienteDataNascimento = clienteDataNascimento;
         this.endereco = endereco;
     }
@@ -98,21 +99,12 @@ public class ClienteDTO implements Serializable {
         this.endereco = endereco;
     }
 
-//    public String getTelefoneNumero() {
-//        return telefoneNumero;
-//    }
-//
-//    public void setTelefoneNumero(String telefoneNumero) {
-//        this.telefoneNumero = telefoneNumero;
-//    }
-
-
-    public List<TelefoneEntity> getTelefone() {
-        return telefone;
+    public String getClienteTelefone() {
+        return clienteTelefone;
     }
 
-    public void setTelefone(List<TelefoneEntity> telefone) {
-        this.telefone = telefone;
+    public void setClienteTelefone(String clienteTelefone) {
+        this.clienteTelefone = clienteTelefone;
     }
 
     public List<AgendamentoEntity> getAgendamento() {

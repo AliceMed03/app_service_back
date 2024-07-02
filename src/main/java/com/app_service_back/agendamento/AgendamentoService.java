@@ -1,5 +1,6 @@
 package com.app_service_back.agendamento;
 
+import com.app_service_back.enums.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,8 @@ public class AgendamentoService {
     //Criando um novo agendamento
     public AgendamentoDTO create(AgendamentoDTO agendamentoDTO){
         AgendamentoEntity agendamento = agendamentoMapper.toEntity(agendamentoDTO);
+        //Definindo status como espera
+        agendamento.setAgendamentoStatus(StatusEnum.ESPERA);
         agendamento = agendamentoRepository.save(agendamento);
         return agendamentoMapper.toDTO(agendamento);
     }

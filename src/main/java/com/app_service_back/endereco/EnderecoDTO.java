@@ -2,6 +2,7 @@ package com.app_service_back.endereco;
 
 import com.app_service_back.cliente.ClienteEntity;
 import com.app_service_back.prestador.PrestadorEntity;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
@@ -11,18 +12,18 @@ import java.util.List;
 public class EnderecoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long idEndereco;
-    @NotNull(message = "O campo RUA é requerido.")
+    @NotBlank(message = "O campo RUA é requerido.")
     private String enderecoRua;
-    @NotNull(message = "O campo CEP é requerido.")
+    @NotBlank(message = "O campo CEP é requerido.")
     private String enderecoCep;
-    @NotNull(message = "O campo NUMERO é requerido.")
+    @NotBlank(message = "O campo NUMERO é requerido.")
     private Integer enderecoNumero;
     private String enderecoComplemento;
-    @NotNull(message = "O campo CIDADE é requerido.")
+    @NotBlank(message = "O campo CIDADE é requerido.")
     private String enderecoCidade;
-    @NotNull(message = "O campo ESTADO é requerido.")
+    @NotBlank(message = "O campo ESTADO é requerido.")
     private String enderecoEstado;
-    @NotNull(message = "O campo BAIRRO é requerido.")
+    @NotBlank(message = "O campo BAIRRO é requerido.")
     private String enderecoBairro;
     private List<ClienteEntity> cliente;
     private List<PrestadorEntity> prestador;
