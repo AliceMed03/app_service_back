@@ -3,12 +3,17 @@ package com.app_service_back.prestador;
 import com.app_service_back.endereco.EnderecoEntity;
 import com.app_service_back.servicos.ServicosEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "prestador")
 public class PrestadorEntity implements Serializable {
@@ -26,30 +31,14 @@ public class PrestadorEntity implements Serializable {
     @Column(unique = true)
     private String prestadorEmail;
     private String prestadorSenha;
-    private String prestadortelefone;
+    private String prestadorTelefone;
 
     //mappedBy = "idServicos",
     @OneToMany(fetch = FetchType.EAGER)
-    private List<ServicosEntity> servicos = new ArrayList<>();
+    private List<ServicosEntity> servicos;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prestadorIdEndereco", nullable = false)
     private EnderecoEntity endereco;
-
-    public PrestadorEntity() {
-
-    }
-    public PrestadorEntity(Long idPrestador, String prestadorNome, String prestadorCpf, String prestadorRazaoSocial, String prestadorNomeFantasia, String prestadorCnpj, String prestadorEmail, String prestadorSenha, EnderecoEntity endereco, String prestadortelefone) {
-        this.idPrestador = idPrestador;
-        this.prestadorNome = prestadorNome;
-        this.prestadorCpf = prestadorCpf;
-        this.prestadorRazaoSocial = prestadorRazaoSocial;
-        this.prestadorNomeFantasia = prestadorNomeFantasia;
-        this.prestadorCnpj = prestadorCnpj;
-        this.prestadorEmail = prestadorEmail;
-        this.prestadorSenha = prestadorSenha;
-        this.prestadortelefone = prestadortelefone;
-        this.endereco = endereco;
-    }
 
     public Long getIdPrestador() {
         return idPrestador;
@@ -115,22 +104,21 @@ public class PrestadorEntity implements Serializable {
         this.prestadorSenha = prestadorSenha;
     }
 
-    public String getPrestadortelefone() {
-        return prestadortelefone;
+    public String getprestadorTelefone() {
+        return prestadorTelefone;
     }
 
-    public void setPrestadortelefone(String prestadortelefone) {
-        this.prestadortelefone = prestadortelefone;
-    }
-
-    public void setServicos(List<ServicosEntity> servicos) {
-        this.servicos = servicos;
+    public void setprestadorTelefone(String prestadorTelefone) {
+        this.prestadorTelefone = prestadorTelefone;
     }
 
     public List<ServicosEntity> getServicos() {
         return servicos;
     }
 
+    public void setServicos(List<ServicosEntity> servicos) {
+        this.servicos = servicos;
+    }
 
     public EnderecoEntity getEndereco() {
         return endereco;
@@ -138,35 +126,5 @@ public class PrestadorEntity implements Serializable {
 
     public void setEndereco(EnderecoEntity endereco) {
         this.endereco = endereco;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PrestadorEntity that = (PrestadorEntity) o;
-        return Objects.equals(idPrestador, that.idPrestador);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idPrestador);
-    }
-
-    @Override
-    public String toString() {
-        return "PrestadorEntity{" +
-                "idPrestador=" + idPrestador +
-                ", prestadorNome='" + prestadorNome + '\'' +
-                ", prestadorCpf='" + prestadorCpf + '\'' +
-                ", prestadorRazaoSocial='" + prestadorRazaoSocial + '\'' +
-                ", prestadorNomeFantasia='" + prestadorNomeFantasia + '\'' +
-                ", prestadorCnpj='" + prestadorCnpj + '\'' +
-                ", prestadorEmail='" + prestadorEmail + '\'' +
-                ", prestadorSenha='" + prestadorSenha + '\'' +
-                ", prestadortelefone='" + prestadortelefone + '\'' +
-                ", servicos=" + servicos +
-                ", endereco=" + endereco +
-                '}';
     }
 }

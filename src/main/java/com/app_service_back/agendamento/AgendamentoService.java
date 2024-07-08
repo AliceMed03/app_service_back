@@ -15,38 +15,34 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoMapper agendamentoMapper;
 
-    //Buscar todos os agendamentos
+    //buscando todos aos agendamentos
     public List<AgendamentoDTO> findAll(){
         List<AgendamentoEntity> agendamentos = agendamentoRepository.findAll();
         return agendamentos.stream().map(agendamentoMapper::toDTO).collect(Collectors.toList());
     }
-
-    //Buscar um agendamento pelo id
+    // buscar pelo id
     public AgendamentoDTO findById(Long id){
         AgendamentoEntity agendamento = agendamentoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Agendamento não encontrado"));
         return agendamentoMapper.toDTO(agendamento);
     }
-
-    //Criando um novo agendamento
-    public AgendamentoDTO create(AgendamentoDTO agendamentoDTO){
+    //criando um novo agendamento
+    public AgendamentoDTO create(AgendamentoDTO agendamentoDTO) {
         AgendamentoEntity agendamento = agendamentoMapper.toEntity(agendamentoDTO);
-        //Definindo status como espera
+        // Definindo o status como ESPERA
         agendamento.setAgendamentoStatus(StatusEnum.ESPERA);
         agendamento = agendamentoRepository.save(agendamento);
         return agendamentoMapper.toDTO(agendamento);
     }
-
-    //Update agendamento
-    public AgendamentoDTO update(Long id, AgendamentoDTO agendamentoDTO){
-        AgendamentoEntity agendamento = agendamentoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Agendamento não encontrado"));
+    //update agendamento
+    public AgendamentoDTO update(Long id, AgendamentoDTO agendamentoDTO) {
+        AgendamentoEntity agendamento = agendamentoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Agendamento não encontrado"));
         agendamentoDTO.setIdAgendamento(id);
         agendamento = agendamentoMapper.updateEntity(agendamentoDTO, agendamento);
         agendamento = agendamentoRepository.save(agendamento);
         return agendamentoMapper.toDTO(agendamento);
     }
 
-    //Delete agendamento
-    public void deleteById(long id){
+    public void deleteById(Long id){
         agendamentoRepository.deleteById(id);
     }
 }

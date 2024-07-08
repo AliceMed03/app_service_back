@@ -18,16 +18,7 @@ public class AgendamentoController {
     @GetMapping
     public ResponseEntity<List<AgendamentoDTO>> getAllAgendamentos(){
         List<AgendamentoDTO> agendamentoDTO = agendamentoService.findAll();
-
-
-        try {
-            return ResponseEntity.ok(agendamentoDTO);
-        }catch (HttpMessageNotWritableException e){
-
-            System.out.println("a");
-        }
-
-        return null;
+        return ResponseEntity.ok(agendamentoDTO);
     }
     @GetMapping("/{id}")
     public ResponseEntity<AgendamentoDTO> getAgendamentoById(@PathVariable Long id){

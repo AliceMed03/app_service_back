@@ -7,11 +7,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AgendamentoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long idAgendamento;
@@ -27,71 +32,4 @@ public class AgendamentoDTO implements Serializable {
     private ClienteEntity cliente;
     private ServicosEntity servicos;
 
-    public AgendamentoDTO() {
-    }
-    public AgendamentoDTO(Long idAgendamento, LocalDate agendamentoData, LocalTime agendamentoHora, String agendamentoObservacao, StatusEnum agendamentoStatus, ClienteEntity cliente, ServicosEntity servicos) {
-        this.idAgendamento = idAgendamento;
-        this.agendamentoData = agendamentoData;
-        this.agendamentoHora = agendamentoHora;
-        this.agendamentoObservacao = agendamentoObservacao;
-        this.agendamentoStatus = agendamentoStatus;
-        this.cliente = cliente;
-        this.servicos = servicos;
-    }
-
-    public Long getIdAgendamento() {
-        return idAgendamento;
-    }
-
-    public void setIdAgendamento(Long idAgendamento) {
-        this.idAgendamento = idAgendamento;
-    }
-
-    public LocalDate getAgendamentoData() {
-        return agendamentoData;
-    }
-
-    public void setAgendamentoData(LocalDate agendamentoData) {
-        this.agendamentoData = agendamentoData;
-    }
-
-    public LocalTime getAgendamentoHora() {
-        return agendamentoHora;
-    }
-
-    public void setAgendamentoHora(LocalTime agendamentoHora) {
-        this.agendamentoHora = agendamentoHora;
-    }
-
-    public String getAgendamentoObservacao() {
-        return agendamentoObservacao;
-    }
-
-    public void setAgendamentoObservacao(String agendamentoObservacao) {
-        this.agendamentoObservacao = agendamentoObservacao;
-    }
-
-    public StatusEnum getAgendamentoStatus() {
-        return agendamentoStatus;
-    }
-
-    public void setAgendamentoStatus(StatusEnum agendamentoStatus) {
-        this.agendamentoStatus = agendamentoStatus;
-    }
-
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
-
-    public ServicosEntity getServicos() {
-        return servicos;
-    }
-
-    public void setServicos(ServicosEntity servicos) {
-        this.servicos = servicos;
-    }
 }

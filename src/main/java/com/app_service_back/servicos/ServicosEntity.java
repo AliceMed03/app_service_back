@@ -5,12 +5,17 @@ import com.app_service_back.categoria.CategoriaEntity;
 import com.app_service_back.endereco.EnderecoEntity;
 import com.app_service_back.prestador.PrestadorEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "servicos")
 public class ServicosEntity implements Serializable {
@@ -34,115 +39,4 @@ public class ServicosEntity implements Serializable {
     private List<AgendamentoEntity> agendamento = new ArrayList<>();
 
 
-    public ServicosEntity() {
-    }
-    public ServicosEntity(Long idServicos, String servicosNome, Double servicosPreco, String servicosDescricao, String servicosInformacoesAdicionais, String servicosClassificacao, CategoriaEntity categoria, PrestadorEntity prestador) {
-        this.idServicos = idServicos;
-        this.servicosNome = servicosNome;
-        this.servicosPreco = servicosPreco;
-        this.servicosDescricao = servicosDescricao;
-        this.servicosInformacoesAdicionais = servicosInformacoesAdicionais;
-        this.servicosClassificacao = servicosClassificacao;
-        this.categoria = categoria;
-        this.prestador = prestador;
-    }
-
-    public Long getIdServicos() {
-        return idServicos;
-    }
-
-    public void setIdServicos(Long idServicos) {
-        this.idServicos = idServicos;
-    }
-
-    public String getServicosNome() {
-        return servicosNome;
-    }
-
-    public void setServicosNome(String servicosNome) {
-        this.servicosNome = servicosNome;
-    }
-
-    public Double getServicosPreco() {
-        return servicosPreco;
-    }
-
-    public void setServicosPreco(Double servicosPreco) {
-        this.servicosPreco = servicosPreco;
-    }
-
-    public String getServicosDescricao() {
-        return servicosDescricao;
-    }
-
-    public void setServicosDescricao(String servicosDescricao) {
-        this.servicosDescricao = servicosDescricao;
-    }
-
-    public String getServicosInformacoesAdicionais() {
-        return servicosInformacoesAdicionais;
-    }
-
-    public void setServicosInformacoesAdicionais(String servicosInformacoesAdicionais) {
-        this.servicosInformacoesAdicionais = servicosInformacoesAdicionais;
-    }
-
-    public String getServicosClassificacao() {
-        return servicosClassificacao;
-    }
-
-    public void setServicosClassificacao(String servicosClassificacao) {
-        this.servicosClassificacao = servicosClassificacao;
-    }
-
-    public CategoriaEntity getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaEntity categoria) {
-        this.categoria = categoria;
-    }
-
-    public PrestadorEntity getPrestador() {
-        return prestador;
-    }
-
-    public void setPrestador(PrestadorEntity prestador) {
-        this.prestador = prestador;
-    }
-
-    public List<AgendamentoEntity> getAgendamento() {
-        return agendamento;
-    }
-
-    public void setAgendamento(List<AgendamentoEntity> agendamento) {
-        this.agendamento = agendamento;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ServicosEntity that = (ServicosEntity) o;
-        return Objects.equals(idServicos, that.idServicos);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idServicos);
-    }
-
-    @Override
-    public String toString() {
-        return "ServicosEntity{" +
-                "idServicos=" + idServicos +
-                ", servicosNome='" + servicosNome + '\'' +
-                ", servicosPreco=" + servicosPreco +
-                ", servicosDescricao='" + servicosDescricao + '\'' +
-                ", servicosInformacoesAdicionais='" + servicosInformacoesAdicionais + '\'' +
-                ", servicosClassificacao='" + servicosClassificacao + '\'' +
-                ", categoria=" + categoria +
-                ", prestador=" + prestador +
-                '}';
-    }
 }

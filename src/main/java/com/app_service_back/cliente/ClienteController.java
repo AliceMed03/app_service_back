@@ -19,16 +19,7 @@ public class ClienteController {
     @GetMapping
     public ResponseEntity<List<ClienteDTO>> getAllClientes(){
         List<ClienteDTO> clienteDTO = clienteService.findAll();
-
-
-        try {
-            return ResponseEntity.ok(clienteDTO);
-        }catch (HttpMessageNotWritableException e){
-
-            System.out.println("a");
-        }
-
-        return null;
+        return ResponseEntity.ok(clienteDTO);
     }
     @GetMapping("/{id}")
     public ResponseEntity<ClienteDTO> getClienteById(@PathVariable Long id){
