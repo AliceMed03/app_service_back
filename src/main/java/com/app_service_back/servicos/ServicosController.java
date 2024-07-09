@@ -16,6 +16,7 @@ public class ServicosController {
     private ServicosService servicosService;
     @GetMapping //retorna uma lista de servicos
     public ResponseEntity<List<ServicosDTO>> getAllServicos(){
+        System.out.println("cheuguei no controller serviços");
         List<ServicosDTO> servicosDTO = servicosService.findAll();
         System.out.println("servicosDTO"+servicosDTO);
         return ResponseEntity.ok(servicosDTO);

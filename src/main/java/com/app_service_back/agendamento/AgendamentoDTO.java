@@ -21,10 +21,10 @@ public class AgendamentoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long idAgendamento;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @NotBlank(message = "O campo DATA é requerido.")
+    @NotNull(message = "O campo DATA é requerido.")
     private LocalDate agendamentoData; // = LocalDate.now();
     @JsonFormat(pattern = "HH:mm")
-    @NotBlank(message = "O campo HORA é requerido.")
+    @NotNull(message = "O campo HORA é requerido.")
     private LocalTime agendamentoHora;
     private String agendamentoObservacao;
     //@Enumerated(EnumType.STRING)

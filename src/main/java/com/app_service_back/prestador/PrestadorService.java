@@ -51,7 +51,7 @@ public class PrestadorService {
     }
 
     public List<PrestadorDTO> findByServicosNome(String servicosNome) {
-        List<ServicosEntity> servicos = servicosRepository.findByServicoNome(servicosNome);
+        List<ServicosEntity> servicos = servicosRepository.findByServicosNome(servicosNome);
         List<PrestadorEntity> prestadores = servicos.stream()
                 .map(ServicosEntity::getPrestador)
                 .collect(Collectors.toList());

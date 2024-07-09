@@ -21,7 +21,7 @@ public class ServicosDTO implements Serializable {
     private Long idServicos;
     @NotBlank(message = "O campo NOME é requerido.")
     private String servicosNome;
-    @NotBlank(message = "O campo PREÇO é requerido.")
+    @NotNull(message = "O campo PREÇO é requerido.")
     private Double servicosPreco;
     @NotBlank(message = "O campo DESCRIÇÃO é requerido.")
     private String servicosDescricao;

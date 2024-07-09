@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ServicosRepository extends JpaRepository<ServicosEntity,Long> {
     //cria uma interface para ser implementada
-    @Query("SELECT s FROM ServicosEntity s WHERE s.servicosNome = :servicosNome")
-    List<ServicosEntity> findByServicoNome(@Param("servicosNome") String servicosNome);
+    @Query("SELECT s FROM ServicosEntity s WHERE s.servicosNome = :servicosName")
+    List<ServicosEntity> findByServicosNome(@Param("servicosName") String servicosName);
 }

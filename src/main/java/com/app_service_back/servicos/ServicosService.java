@@ -19,6 +19,7 @@ public class ServicosService {
     //buscando todos os servicos
     public List<ServicosDTO> findAll(){
         List<ServicosEntity> servicos = servicosRepository.findAll();
+        System.out.println("lista de serviços:"+servicos);
         return servicos.stream().map(servicosMapper::toDTO).collect(Collectors.toList());
     }
     // buscar pelo id
